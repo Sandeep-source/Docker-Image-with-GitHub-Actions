@@ -1,7 +1,15 @@
 # Docker-Image-with-GitHub-Actions
    This repo provides guide to creating a simple pipeline to build and upload docker image artifacts to dockerhub repo
  as changes take place in github main branch.
-  
+ 
+## Prerequisites
+   1. Docker basics.
+      - [introduction to docker](https://youtu.be/17Bl31rlnRM)
+      - [Docker complete course](https://youtu.be/3c-iBn73dDE)
+       
+   1. Yaml basics
+      - [Yaml tutorial](https://youtu.be/1uFVr15xDGg)
+      - [Yaml Complete course](https://youtu.be/IA90BTozdow)
 ## Scanario
    For this demo, the application to be dockerize in a static site.
  
