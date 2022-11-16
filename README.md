@@ -13,7 +13,7 @@
 ## Scanario
    For this demo, the application to be dockerize in a static site.It is a simple game of guessing number between 0 to 9.
    
-    ![Screenshot](https://user-images.githubusercontent.com/61611561/202146123-80da9007-d472-48ce-ad0c-de3eab997eab.png)
+   ![Screenshot](https://user-images.githubusercontent.com/61611561/202146123-80da9007-d472-48ce-ad0c-de3eab997eab.png)
 
 ## Repository structure
    ```
@@ -55,6 +55,7 @@ Its's all about what we need to get started let's take a look how to setup githu
    3. Rename the file with the name you want for your workflow.
 
 ### Writing Code for workflow
+
   1. Replace the code of workflow with the following.
   
       ```yaml
