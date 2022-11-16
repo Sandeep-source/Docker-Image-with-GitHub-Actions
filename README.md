@@ -11,8 +11,10 @@
       - [Yaml tutorial](https://youtu.be/1uFVr15xDGg)
       - [Yaml Complete course](https://youtu.be/IA90BTozdow)
 ## Scanario
-   For this demo, the application to be dockerize in a static site.
- 
+   For this demo, the application to be dockerize in a static site.It is a simple game of guessing number between 0 to 9.
+   
+    ![Screenshot](https://user-images.githubusercontent.com/61611561/202146123-80da9007-d472-48ce-ad0c-de3eab997eab.png)
+
 ## Repository structure
    ```
    /src
