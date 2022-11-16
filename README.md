@@ -151,10 +151,10 @@ Its's all about what we need to get started let's take a look how to setup githu
                       - uses: actions/checkout@v3
                       - name: Build the Docker image
                         run: |
-                           docker build . --file Dockerfile --tag mysite
+                           docker build . --file Dockerfile --tag hackthenumber
          ```
     - Notice the uses part specify `actions/checkout@v3`. This action checks if our repository is present and we have access to it.
-    - Command `docker build . --file Dockerfile --tag mysite` builds an image named mysite it is currently stored at the local system at which the job is running.
+    - Command `docker build . --file Dockerfile --tag hackthenumber` builds an image named hackthenumber it is currently stored at the local system at which the job is running.
     
 7. Login to dockerhub
     Inorder to make push image to docker hub we need to login to the dockerhub. Docker recommend to create access tokens for logins instead of using password.
@@ -190,13 +190,13 @@ Its's all about what we need to get started let's take a look how to setup githu
    - With our choosen name it will look like something this
    
     ```yaml
-         docker tag mysite ${{secret.USERNAME}}/mysite
+         docker tag hackthenumber ${{secret.USERNAME}}/hackthenumber
     ```
     
 9. Add the following line to push image to dockerhub
 
     ```yaml
-         docker push ${{secret.USERNAME}}/mysite
+         docker push ${{secret.USERNAME}}/hackthenumber
     ```
     
  Now our file will look like something this
@@ -212,10 +212,10 @@ Its's all about what we need to get started let's take a look how to setup githu
                    - uses: actions/checkout@v3
                    - name: Build the Docker image
                      run: |
-                           docker build . --file Dockerfile --tag mysite
+                           docker build . --file Dockerfile --tag hackthenumber
                            docker login -u ${{secret.USERNAME}} -p ${{secret.TOKEN}}
-                           docker tag mysite ${{secret.USERNAME}}/mysite
-                           docker push ${{secret.USERNAME}}/mysite
+                           docker tag hackthenumber ${{secret.USERNAME}}/hackthenumber
+                           docker push ${{secret.USERNAME}}/hackthenumber
  ```
  
  
