@@ -11,5 +11,5 @@ jobs:
              run: |
                   docker build . --file Dockerfile --tag hackthenumber
                   docker login -u ${{secrets.USERNAME}} -p ${{secrets.TOKEN}}
-                  docker tag mysite ${{secrets.USERNAME}}/hackthenumber
+                  docker tag hackthenumber ${{secrets.USERNAME}}/hackthenumber
                   docker push ${{secrets.USERNAME}}/hackthenumber
