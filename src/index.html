@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Site : Hack The number</title>
+    <style>
+        .box{
+            background-color: #f2f3f5;
+            box-shadow: 2px 2px 2px grey;
+            width:400px;
+            display: grid;
+            margin: auto;
+            padding: 20px;
+            height: 300px;
+            justify-content: center;
+            grid-template-rows: 20% auto auto;
+        }
+        input{
+            font-family: monospace;
+            border: none;
+            outline: none;
+            padding: 10px;
+            margin: auto;
+            width: 100%;
+            box-shadow: 1px 1px 2px grey;
+            border-radius: 15px;
+            background-color: #f8f8f8;
+        }
+        code{
+            font-weight: 700;
+            font-size: 30px;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            
+        }
+        .num{
+            display: grid;
+            grid-template-rows:auto 20%; 
+            justify-content: space-around;
+        }
+        button{
+            outline: none;
+            border: none;
+            padding: 5px;
+            border-radius: 10px;
+            width: 80px;
+            font-family: 'Courier New', Courier, monospace;
+            height: 30px;
+            box-shadow: 1px 1px 2px grey;
+            background-color: black;
+            margin: auto;
+            color: white;
+
+        }
+        #msg{
+            padding: 10px;
+            text-align: center;
+            padding: auto;
+        }
+    </style>
+    <script>
+        var hacked=Math.floor(Math.random() * 10);
+        var attempt=0;
+        function hack(){
+              var msgs=["Almost cracked 🔐","Nice try 🔒","Opened 🔓"];
+              attempt+=1;
+              var num=parseInt(document.getElementById("num").value);
+              if(num==hacked){
+                document.getElementById("msg").innerText=msgs[2]+"\n"+"Attempt : "+attempt+"\n Try with To Open Another Lock";
+                attempt=0;
+              }else if(Math.abs(hacked-num)<3){
+                document.getElementById("msg").innerText=msgs[0]+"\n"+"Attempt : "+attempt;
+              }else{
+                document.getElementById("msg").innerText=msgs[1]+"\n"+"Attempt : "+attempt;
+              }
+        }
+    </script>
+</head>
+<body>
+    <div class="con">
+       <div class="box">
+           <div class="title">
+              <code>Hack The Number</code>
+           </div>
+          <div class="num">
+             <input id="num" placeholder="Enter the number.."/>
+             <button onclick="hack()">Hack</button>
+          </div>
+          <div id="msg">
+
+          </div>
+       </div>
+    </div>
+</body>
+</html>
