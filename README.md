@@ -1,5 +1,5 @@
 # Docker-Image-with-GitHub-Actions
-   This repo provides guide to creating a simple pipeline to build and upload docker image artifacts to dockerhub repo
+   This repo provides guide to creating a simple pipeline to build and upload docker image artifacts to dockerhub repo with the help of github actions
  as changes take place in github main branch.
  
 ## Prerequisites
