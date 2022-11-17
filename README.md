@@ -140,7 +140,7 @@ Its's all about what we need to get started let's take a look how to setup githu
       run: |
     ```
     
-    - notice `|` after `run: ` this allows as to write multiple commands.
+    - notice `|` after `run:` this allows as to write multiple commands.
   
  6. To build image add the following command to `Build the Docker image` step and replace `<image_name>` With name of your choice.
  
@@ -151,18 +151,18 @@ Its's all about what we need to get started let's take a look how to setup githu
     - Now our file look something like this
     
          ```yaml
-           name: Docker image CI
-           on:
-              push:
-                branches: [ "main" ]
-           jobs:
-              docker-build:
-                   runs-on: ubuntu-latest
-                   steps:
-                      - uses: actions/checkout@v3
-                      - name: Build the Docker image
-                        run: |
-                           docker build . --file Dockerfile --tag hackthenumber
+         name: Docker image CI
+         on:
+           push:
+             branches: [ "main" ]
+         jobs:
+             docker-build:
+                runs-on: ubuntu-latest
+                  steps:
+                    - uses: actions/checkout@v3
+                    - name: Build the Docker image
+                      run: |
+                         docker build . --file Dockerfile --tag hackthenumber
          ```
     - Notice the uses part specify `actions/checkout@v3`. This action checks if our repository is present and we have access to it.
     - Command `docker build . --file Dockerfile --tag hackthenumber` builds an image named hackthenumber it is currently stored at the local system at which the job is running.
@@ -172,6 +172,13 @@ Its's all about what we need to get started let's take a look how to setup githu
     - Creating dockerhub Access token
     
       - To create a access token login to dockerhub. Goto access `Account Setting > Security > New Access token`.
+       
+        ![acc](https://user-images.githubusercontent.com/61611561/202457175-6c55497d-596a-4537-831a-d4f59041400f.png)
+       
+        ![security](https://user-images.githubusercontent.com/61611561/202457235-8dcde5f3-e603-4a56-a278-ce77beb0d9b9.png)
+
+
+
       - Enter description for the token and click generate.
       - Select `Copy and Close`.
       
@@ -187,47 +194,74 @@ Its's all about what we need to get started let's take a look how to setup githu
     
       - Add the following lines to run to login 
         ```yaml
-         docker login -u ${{secret.USERNAME}} -p ${{secret.TOKEN}}
+        docker login -u ${{secret.USERNAME}} -p ${{secret.TOKEN}}
         ```
         
 8. Tag image to refer to Dockerhub repo
 
    - To tag image add the following command by replacing `<image_name>` with the image name you have choosen for your image
    
-    ```yaml
-         docker tag <image_name> ${{secret.USERNAME}}/<image_name> 
-    ```
+     ```yaml
+     docker tag <image_name> ${{secret.USERNAME}}/<image_name> 
+     ```
     
    - With our choosen name it will look like something this
-   
-    ```yaml
-         docker tag hackthenumber ${{secret.USERNAME}}/hackthenumber
-    ```
+    
+     ```yaml
+     docker tag hackthenumber ${{secret.USERNAME}}/hackthenumber
+     ```
     
 9. Add the following line to push image to dockerhub
 
     ```yaml
-         docker push ${{secret.USERNAME}}/hackthenumber
+    docker push ${{secret.USERNAME}}/hackthenumber
     ```
     
  Now our file will look like something this
- ``` yaml
-      name: Docker image CI
-      on:
-        push:
-          branches: [ "main" ]
-        jobs:
-          docker-build:
-               runs-on: ubuntu-latest
-               steps:
-                   - uses: actions/checkout@v3
-                   - name: Build the Docker image
-                     run: |
-                           docker build . --file Dockerfile --tag hackthenumber
-                           docker login -u ${{secret.USERNAME}} -p ${{secret.TOKEN}}
-                           docker tag hackthenumber ${{secret.USERNAME}}/hackthenumber
-                           docker push ${{secret.USERNAME}}/hackthenumber
- ```
+   ```yaml
+   name: Docker image CI
+   on:
+     push:
+       branches: [ "main" ]
+   jobs:
+       docker-build:
+           runs-on: ubuntu-latest
+              steps:
+                 - uses: actions/checkout@v3
+                 - name: Build the Docker image
+                   run: |
+                      docker build . --file Dockerfile --tag hackthenumber
+                      docker login -u ${{secret.USERNAME}} -p ${{secret.TOKEN}}
+                      docker tag hackthenumber ${{secret.USERNAME}}/hackthenumber
+                      docker push ${{secret.USERNAME}}/hackthenumber
+   ```
+   
+## Quick Test deployed image
+
+ - Goto https://labs.play-with-docker.com and login with dockerhub credentials.
+ - Click start and then Add New Instance.
+ 
+     ![image](https://user-images.githubusercontent.com/61611561/202459374-7e24e6b2-458c-408e-9911-4fb18e88f01e.png)
+   
+     ![Add instance](https://user-images.githubusercontent.com/61611561/202459763-11efed48-3ab4-4194-bde8-e960d41eaefd.png)
+ - Run the command `docker run -dp 8080:80 <username>/<image_name>` by replacing `<username>` with dockerhub username and `<image_name>` with the image name used in github action. For example
+ 
+   ```bash
+   docker run -dp 8080:80 sandeepsource/hackthenumber
+   ```
+   
+  - Click the port number `8080` in right side of open port button. If button for port `8080` not appeared then click `open port` button and enter 8080 and click ok.
+  
+    ![open port](https://user-images.githubusercontent.com/61611561/202462363-224ccd86-29a7-448e-afd4-ce90901d009b.png)
+    
+  
+  - Now if everything is gone well you will able to see following output.
+  
+    ![output](https://user-images.githubusercontent.com/61611561/202462572-e481e050-0a96-42fd-ac2e-e42513626447.png)
+
+
+
+
  
  
    
