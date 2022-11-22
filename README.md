@@ -11,9 +11,11 @@
       - [Yaml 📄 tutorial](https://youtu.be/1uFVr15xDGg)
       - [Yaml 📄 Complete course](https://youtu.be/IA90BTozdow)
 
-```
-Note:- If you are viewing this page from GitHub pages then some code for GitHub secrets will not be shown, you will only see a $ sign. Check out GitHub repo from 👉[Here](https://sandeep-source.github.io/Docker-Image-with-GitHub-Actions/) for the correct code.
-```
+## Note
+If you are viewing this page from GitHub pages then some code for GitHub secrets will not be shown, you will only 
+see a $ sign. Check out GitHub repo from 👉[Here](https://sandeep-source.github.io/Docker-Image-with-GitHub-Actions/)
+for the correct code.
+
 ## Scanario
 
    For this demo, the application is to be dockerized 🐳 in a static site. It is a simple game of guessing 🤔 numbers between 0 0️⃣ to 9 9️⃣. You access this page 
