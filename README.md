@@ -200,7 +200,7 @@ Its's all about what we need to get started let's take a look 👀 how to setup 
       - Add the following lines to run to login 🔐
       
         ```yaml
-        docker login -u ${{secret.USERNAME}} -p ${{secret.TOKEN}}
+        docker login -u ${{secrets.USERNAME}} -p ${{secrets.TOKEN}}
         ```
         
 8. Tag image to refer to Dockerhub 🐳 repo
@@ -208,19 +208,19 @@ Its's all about what we need to get started let's take a look 👀 how to setup 
    - To tag image add the following command 💻 by replacing `<image_name>` with the image name you have choosen for your image
    
      ```yaml
-     docker tag <image_name> ${{secret.USERNAME}}/<image_name> 
+     docker tag <image_name> ${{secrets.USERNAME}}/<image_name> 
      ```
     
    - With our choosen name it will look 👀 like something this
     
      ```yaml
-     docker tag hackthenumber ${{secret.USERNAME}}/hackthenumber
+     docker tag hackthenumber ${{secrets.USERNAME}}/hackthenumber
      ```
     
 9. Add the following line to push image to dockerhub 🐳
 
     ```yaml
-    docker push ${{secret.USERNAME}}/hackthenumber
+    docker push ${{secrets.USERNAME}}/hackthenumber
     ```
     
  Now our file 📄 will look 👀 like something this
@@ -238,9 +238,9 @@ Its's all about what we need to get started let's take a look 👀 how to setup 
                  - name: Build the Docker image
                    run: |
                       docker build . --file Dockerfile --tag hackthenumber
-                      docker login -u ${{secret.USERNAME}} -p ${{secret.TOKEN}}
-                      docker tag hackthenumber ${{secret.USERNAME}}/hackthenumber
-                      docker push ${{secret.USERNAME}}/hackthenumber
+                      docker login -u ${{secrets.USERNAME}} -p ${{secrets.TOKEN}}
+                      docker tag hackthenumber ${{secrets.USERNAME}}/hackthenumber
+                      docker push ${{secrets.USERNAME}}/hackthenumber
    ```
    
 ## Quick Test deployed image
