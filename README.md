@@ -13,7 +13,7 @@
 
 ## Note
 If you are viewing this page from GitHub pages then some code for GitHub secrets will not be shown, you will only 
-see a $ sign. Check out GitHub repo from 👉[Here](https://sandeep-source.github.io/Docker-Image-with-GitHub-Actions/)
+see a $ sign. Check out GitHub repo from 👉[Here](https://github.com/Sandeep-source/Docker-Image-with-GitHub-Actions)
 for the correct code.
 
 ## Scanario
