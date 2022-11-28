@@ -76,6 +76,7 @@
               if(num==hacked){
                 document.getElementById("msg").innerText=msgs[2]+"\n"+"Attempt : "+attempt+"\n Try with To Open Another Lock";
                 attempt=0;
+                hacked=Math.floor(Math.random() * 10);
               }else if(Math.abs(hacked-num)<3){
                 document.getElementById("msg").innerText=msgs[0]+"\n"+"Attempt : "+attempt;
               }else{
