@@ -250,7 +250,8 @@ It's all about what we need to get started. Let's take a look 👀 how to setup 
                       docker tag hackthenumber ${{secrets.USERNAME}}/hackthenumber
                       docker push ${{secrets.USERNAME}}/hackthenumber
    ```
-10. Similearly you can add code to test if everything working file in the same script. After adding testing code our final code will look like
+
+ Similarly, you can add code to test if everything is working fine in the same script. After adding the testing code, our final code will look like this.
   ```yaml
   name: Docker image CI
   on:
