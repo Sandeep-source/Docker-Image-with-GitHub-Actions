@@ -250,6 +250,56 @@ It's all about what we need to get started. Let's take a look 👀 how to setup 
                       docker tag hackthenumber ${{secrets.USERNAME}}/hackthenumber
                       docker push ${{secrets.USERNAME}}/hackthenumber
    ```
+10. Similearly you can add code to test if everything working file in the same script. After adding testing code our final code will look like
+  ```yaml
+  name: Docker image CI
+  on:
+    push:
+      branches: [ "main" ]
+  jobs:
+    docker-build:
+          runs-on: ubuntu-latest
+          steps:
+            - uses: actions/checkout@v3
+            - name: Build the Docker image
+              run: |
+                    docker build . --file Dockerfile --tag hackthenumber
+                    docker login -u ${{secrets.USERNAME}} -p ${{secrets.TOKEN}}
+                    docker tag hackthenumber ${{secrets.USERNAME}}/hackthenumber
+                    
+    docker-test:
+          runs-on: ubuntu-latest
+          needs: docker-build
+          steps:
+            - uses: actions/checkout@v3
+            - name: Test image presence
+              run: |
+                docker image inspect ${{secrets.USERNAME}}/hackthenumber
+                if [[ $? -eq 1 ]]; then
+                    echo "❌ Image not found!"
+                    exit 1  # This will cause the job to fail
+                else
+                    echo "✅ Image Build Successfully!"
+                fi
+            - name: Test image response
+              run: |
+                    docker run -itdp 8000:80 --rm ${{secrets.USERNAME}}/hackthenumber
+                    response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000)
+                    if [[ $response -ne 200 ]]; then
+                      echo "❌ Image response is not 200!"
+                      exit 1
+                    else
+                      echo "✅ Image response is 200!"
+                    fi
+    docker-deploy:
+          runs-on: ubuntu-latest
+          needs: docker-test
+          steps:
+              - uses: actions/checkout@v3
+              - name: Deploy to docker hub
+                run: |
+                  docker push ${{secrets.USERNAME}}/hackthenumber && echo "✅ Deployed to Docker Hub" || echo "❌ Deployment to Docker Hub failed"
+  ```
    
 ## Quick Test deployed image
 
