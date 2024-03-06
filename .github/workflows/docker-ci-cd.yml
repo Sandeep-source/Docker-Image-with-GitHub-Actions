@@ -32,7 +32,7 @@ jobs:
                fi
            - name: Test image response
              run: |
-                  docker run --rm --name test -d ${{secrets.USERNAME}}/hackthenumber
+                  docker run --rm --name test -itd ${{secrets.USERNAME}}/hackthenumber
                   response=$(docker exec -it test curl -s -o /dev/null -w "%{http_code}" http://localhost:8000)
                   if [[ $response -ne 200 ]]; then
                      echo "❌ Image response is not 200!"
